@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Chef_atelier extends Personne {
     private int nbExperience;
-    private Date dateExperience;
+    private Date dateRecrutement;
     private Date datePromotion;
     private Statue statut;
     // Constructeur sans arguments
     public Chef_atelier() {
         super(); // Appel au constructeur de la classe Personne
         this.nbExperience = 0;
-        this.dateExperience = new Date(); // Initialise la date actuelle
+        this.dateRecrutement = new Date(); // Initialise la date actuelle
         this.datePromotion = null;
         this.statut = Statue.NEANT; // Initialise le statut a neant par défaut
     }
@@ -24,7 +24,7 @@ public class Chef_atelier extends Personne {
      int nbExperience, Date dateExperience, Date datePromotion, Statue statut) {
         super(nom, prenom, email, login, password);
         this.nbExperience = nbExperience;
-        this.dateExperience = dateExperience;
+        this.dateRecrutement = dateExperience;
         this.datePromotion = datePromotion;
         this.statut = statut;
     }
@@ -34,8 +34,8 @@ public class Chef_atelier extends Personne {
         return nbExperience;
     }
 
-    public Date getDateExperience() {
-        return dateExperience;
+    public Date getDateRecrutement() {
+        return dateRecrutement;
     }
 
     public Date getDatePromotion() {
@@ -51,8 +51,8 @@ public class Chef_atelier extends Personne {
         this.nbExperience = nbExperience;
     }
 
-    public void setDateExperience(Date dateExperience) {
-        this.dateExperience = dateExperience;
+    public void setDateRecrutement(Date dateRecrutement) {
+        this.dateRecrutement = dateRecrutement;
     }
 
     public void setDatePromotion(Date datePromotion) {
@@ -65,7 +65,7 @@ public class Chef_atelier extends Personne {
 
     @Override
     public String toString() {
-        return super.toString() + "\nExpérience: " + nbExperience + " ans\nDate d'expérience: " + dateExperience
+        return super.toString() + "\nExpérience: " + nbExperience + " ans\nDate de Recrutement: " + dateRecrutement
                 + "\nDate de promotion: " + datePromotion + "\nStatut: " + statut;
     }
 
@@ -74,9 +74,9 @@ public class Chef_atelier extends Personne {
         System.out.println("Voici les informations du chef d'atelier :\n" + this.toString());
     }
 
-    public void miseAjourExperienceFromUserInput() {
+    public void miseAjourDateRecrutement() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Entrez la nouvelle date d'expérience (format : dd/MM/yyyy) : ");
+        System.out.println("Entrez la nouvelle date de recrutement (format : dd/MM/yyyy) : ");
         String userInput = scanner.nextLine();
     
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -84,10 +84,10 @@ public class Chef_atelier extends Personne {
             Date nouvelleDateExp = dateFormat.parse(userInput);
     
             // Mise à jour de la date d'expérience avec la nouvelle date
-            this.dateExperience = nouvelleDateExp;
+            this.dateRecrutement = nouvelleDateExp;
     
             // Affichage de la nouvelle date d'expérience
-            System.out.println("Nouvelle date d'expérience : " + dateFormat.format(this.dateExperience));
+            System.out.println("Nouvelle date de recrutement : " + dateFormat.format(this.dateRecrutement));
     
         } catch (ParseException e) {
             System.out.println("Format de date incorrect. Utilisez le format dd/MM/yyyy.");

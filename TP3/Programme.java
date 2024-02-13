@@ -19,11 +19,11 @@ public class Programme {
         technicien.afficher();
 
         // Mise à jour de l'expérience du chef d'atelier
-        Chef_atelier chefAtelier = new Chef_atelier("HadjSadok", "Riadh", "RiadhHS99@example.com", "RiadhHS", "securepass123", 2, new Date(), null, Statue.ACTIF);
+        Chef_atelier chefAtelier = new Chef_atelier("HadjSadok", "Riadh", "RiadhHS99@example.com", "RiadhHS", "securepass123", 1, new Date(), null, Statue.ACTIF);
         chefAtelier.afficher();
 
         // Simulation de la mise à jour de l'expérience avec une nouvelle date
-        chefAtelier.miseAjourExperienceFromUserInput();
+        chefAtelier.miseAjourDateRecrutement();;
 
         // Affichage des nouvelles informations du chef d'atelier
         chefAtelier.afficher();
