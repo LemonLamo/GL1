@@ -2,13 +2,12 @@ package TP4;
 
 import java.util.Date;
 import java.util.Vector;
-
 public class Réparation {
 
 	private Date dateRep; 
 	private int nbHeure;
 	private String travaux;
-	private Vector<Pièce> listePièces;
+	private Vector<Pièce> listePiècesRep;
 	
 	public Date getDateRep() {
 		return dateRep;
@@ -30,15 +29,15 @@ public class Réparation {
 	} 
 	
 	public Vector<Pièce> getListePièces() {
-		return listePièces;
+		return listePiècesRep;
 	}
 	public void setListePièces(Vector<Pièce> listePièces) {
-		this.listePièces = listePièces;
+		this.listePiècesRep = listePièces;
 	}
 	public void afficherListePièces() {
 		int compteur = 1; 
 		System.out.println("************************Liste des pièces************************");
-		for(Pièce pièce : listePièces) {
+		for(Pièce pièce : listePiècesRep) {
 			System.out.println("************Pièce N°"+compteur);
 			System.out.println("Réference :"+pièce.getRéf());
 			System.out.println("Nom :"+pièce.getNom());
@@ -48,24 +47,65 @@ public class Réparation {
 			compteur++;
 		}
 		}
-
 	public void ajouterPièce(Pièce p) {
 	    if (p != null) {
-	        listePièces.add(p);
+	        listePiècesRep.add(p);
+	        Pièce.quantitéStock++;
 	    } else {
 	        System.out.println("Objet Pièce n'est pas instancié");
 	    }
 	}
+	public void ajouterPièce(int réf, String nom , int quantité , double prix ) {
+		
+		Pièce p = new Pièce(réf , nom , quantité , prix);
+		listePiècesRep.add(p);
+		Pièce.quantitéStock++;
+		
+	}
 	public void supprimerPièce(int réf) {
 		int cpt = 0;
-		for(Pièce pièce : listePièces) {
+		for(Pièce pièce : listePiècesRep) {
 			if(pièce.getRéf() == réf) {
-				listePièces.remove(cpt);
+				listePiècesRep.remove(cpt);
 				break;
 			}
 			cpt++;
+			Pièce.quantitéStock--;
 		}
 	}
-
-
+	
+	public void modifierPièce(Pièce p) {
+		int cpt = 0; 
+		for (Pièce pièce : listePiècesRep) {
+			if(p.getRéf() == pièce.getRéf()) {
+				listePiècesRep.elementAt(cpt).setNom(pièce.getNom());
+				listePiècesRep.elementAt(cpt).setPrix(pièce.getPrix());
+				listePiècesRep.elementAt(cpt).setQuantité(pièce.getQuantité());
+				break;
+		}
+		cpt++;
+		}
+	}
+	public void modifierPièce(int réf, String nom , int quantité , double prix ) {
+		int cpt = 0; 
+		for (Pièce pièce : listePiècesRep) {
+			if(réf == pièce.getRéf()) {
+				listePiècesRep.elementAt(cpt).setNom(nom);
+				listePiècesRep.elementAt(cpt).setPrix(prix);
+				listePiècesRep.elementAt(cpt).setQuantité(quantité);
+				break;
+		}
+		cpt++;
+		}
+	}
+	public double calculerPrixRep(Equipement e) {
+		double total = 0.0; 
+		
+		for (Pièce pièce : listePiècesRep) {
+			if(e.isPieceDefectueuse(pièce.getRéf())) {
+				total += e.getPièceByRéf(pièce.getRéf()).calculerMontantPièce();
+			}	
+		}
+		return total+this.nbHeure*2000;
+	}
 }

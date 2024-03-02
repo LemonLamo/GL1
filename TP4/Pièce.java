@@ -1,10 +1,11 @@
 package TP4;
-public class Pièce {
+// les classes statiques ne puevent pas exister en dehors d'une classe instantciable
+class Pièce {
 
 	private int réf; 
 	private String nom; 
 	private int quantité; 
-	private int quantitéStock; 
+	static int quantitéStock; 
 	private double prix; 
 	
 	public boolean isDispo(String nom) {
@@ -12,17 +13,16 @@ public class Pièce {
 	}
 	
 	public void enterStock(int quantité) {
-		this.quantitéStock += quantité; 
+		quantitéStock += quantité; 
 	}
 	
 	public double calculerMontantPièce() {
 		return prix * quantité; 
 	}
-	public Pièce(int réf, String nom, int quantité, int quantitéStock, double prix) {
+	public Pièce(int réf, String nom, int quantité, double prix) {
 		this.setRéf(réf);
 		this.setNom(nom);
-		this.quantité = quantité;
-		this.quantitéStock = quantitéStock;
+		this.quantité = quantité;		
 		this.prix = prix;
 	}
 
@@ -43,10 +43,6 @@ public class Pièce {
 	public int getQuantitéStock() {
 		return quantitéStock;
 	}
-
-	public void setQuantitéStock(int quantitéStock) {
-		this.quantitéStock = quantitéStock;
-	}
 	public double getPrix() {
 		return prix;
 	}
@@ -64,4 +60,5 @@ public class Pièce {
 	
 	
 }
+
 
