@@ -5,25 +5,34 @@ class Pièce {
 	private int réf; 
 	private String nom; 
 	private int quantité; 
-	static int quantitéStock; 
+	static int quantitéStock =0; 
 	private double prix; 
 	
 	public boolean isDispo(String nom) {
-		return quantitéStock >= quantité;
+		if (nom == this.nom) {
+			return quantité <= quantitéStock;
+		} 
+		else return false;
 	}
 	
 	public void enterStock(int quantité) {
-		quantitéStock += quantité; 
+		if (quantité <= 0) {
+			System.out.println("la quantité doit etre positive");
+		} else {
+			quantitéStock += quantité;
+		}
 	}
 	
 	public double calculerMontantPièce() {
 		return prix * quantité; 
 	}
+
 	public Pièce(int réf, String nom, int quantité, double prix) {
-		this.setRéf(réf);
-		this.setNom(nom);
+		this.réf = réf;
+		this.nom=nom;
 		this.quantité = quantité;		
 		this.prix = prix;
+		quantitéStock++;
 	}
 
 	public int getRéf() {

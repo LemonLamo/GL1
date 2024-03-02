@@ -7,6 +7,8 @@ public class Réparation {
 	private Date dateRep; 
 	private int nbHeure;
 	private String travaux;
+	//on peut avoir plusieurs pieces dans la mm reparation 
+    //creer un vecteur pour montrer l'aggregation
 	private Vector<Pièce> listePiècesRep;
 	
 	public Date getDateRep() {
@@ -34,11 +36,12 @@ public class Réparation {
 	public void setListePièces(Vector<Pièce> listePièces) {
 		this.listePiècesRep = listePièces;
 	}
+
 	public void afficherListePièces() {
 		int compteur = 1; 
 		System.out.println("************************Liste des pièces************************");
 		for(Pièce pièce : listePiècesRep) {
-			System.out.println("************Pièce N°"+compteur);
+			System.out.println("Pièce N° :"+compteur);
 			System.out.println("Réference :"+pièce.getRéf());
 			System.out.println("Nom :"+pièce.getNom());
 			System.out.println("Quantité :"+pièce.getQuantité());
@@ -47,10 +50,11 @@ public class Réparation {
 			compteur++;
 		}
 		}
+		
 	public void ajouterPièce(Pièce p) {
 	    if (p != null) {
 	        listePiècesRep.add(p);
-	        Pièce.quantitéStock++;
+	     
 	    } else {
 	        System.out.println("Objet Pièce n'est pas instancié");
 	    }
@@ -59,7 +63,6 @@ public class Réparation {
 		
 		Pièce p = new Pièce(réf , nom , quantité , prix);
 		listePiècesRep.add(p);
-		Pièce.quantitéStock++;
 		
 	}
 	public void supprimerPièce(int réf) {
@@ -67,11 +70,12 @@ public class Réparation {
 		for(Pièce pièce : listePiècesRep) {
 			if(pièce.getRéf() == réf) {
 				listePiècesRep.remove(cpt);
+				Pièce.quantitéStock--;
 				break;
 			}
-			cpt++;
-			Pièce.quantitéStock--;
+		  cpt++;
 		}
+		System.out.println("");
 	}
 	
 	public void modifierPièce(Pièce p) {
@@ -80,12 +84,13 @@ public class Réparation {
 			if(p.getRéf() == pièce.getRéf()) {
 				listePiècesRep.elementAt(cpt).setNom(pièce.getNom());
 				listePiècesRep.elementAt(cpt).setPrix(pièce.getPrix());
-				listePiècesRep.elementAt(cpt).setQuantité(pièce.getQuantité());
+				listePiècesRep.elementAt(cpt).setQuantité(pièce.getQuantité());		
 				break;
 		}
 		cpt++;
 		}
 	}
+
 	public void modifierPièce(int réf, String nom , int quantité , double prix ) {
 		int cpt = 0; 
 		for (Pièce pièce : listePiècesRep) {
