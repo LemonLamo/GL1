@@ -1,4 +1,7 @@
 package TP3;
+import java.util.Scanner;
+
+
 
 public class Personne {
     private String nom;
@@ -75,23 +78,32 @@ public class Personne {
         System.out.println("Voici les informations du client :\n " + this.toString());
     }
 
-    public boolean sauthentifier1(String login) {
-        // 1er essai de connexion
-        return login.equals(this.password);
+
+    public boolean sauthentifier1(Scanner scanner) {
+        System.out.print("Entrez votre mot de passe : ");
+        String enteredPassword = scanner.next();
+        return enteredPassword.equals(this.password);
     }
     
-    public boolean sauthentifier2(String login) {
-        // 3 essais de connexion
-        int remainingAttempts = 2; // Nombre d'essais restants après le 1er essai
-    
+  
+    public boolean sauthentifier2(Scanner scanner) {
+        int remainingAttempts = 3; // 3 essais de connexion
+        
         while (remainingAttempts > 0) {
-            if (login.equals(this.password)) {
-                return true;
+            System.out.print("Entrez votre mot de passe (tentatives restantes : " + remainingAttempts + ") : ");
+            String enteredPassword = scanner.next();
+    
+            if (enteredPassword.equals(this.password)) {
+                return true; // Authentification réussie
             } else {
                 remainingAttempts--;
+                System.out.println("Mot de passe incorrect. Veuillez réessayer.");
             }
         }
-        return false;
+        
+        return false; // Toutes les tentatives ont échoué
     }
+    
+    
     
 }
