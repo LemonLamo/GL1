@@ -21,5 +21,22 @@ public class Equipement {
     public int compterPiecesDefectueuse() {
         return pièceDefectueuse.cardinality();
     }
+    
+    public BitSet getPièceDefectueuse() {
+        return pièceDefectueuse;
+    }
+    public void setPièceDefectueuse(BitSet pièceDefectueuse) {
+        this.pièceDefectueuse = pièceDefectueuse;
+    }
+    
+    public Vector<Pièce> getListePiècesEquipement() {
+        return listePiècesEquipement;
+    }
+
+    
+    public void setListePiècesEquipement(Vector<Pièce> listePiècesEquipement) {
+        this.listePiècesEquipement = listePiècesEquipement;
+    }
 }
+
 

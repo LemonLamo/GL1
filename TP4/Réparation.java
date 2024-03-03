@@ -39,7 +39,7 @@ public class Réparation {
 
 	public void afficherListePièces() {
 		int compteur = 1; 
-		System.out.println("************************Liste des pièces************************");
+		System.out.println("************************Liste des pièces************************ \n");
 		for(Pièce pièce : listePiècesRep) {
 			System.out.println("Pièce N° :"+compteur);
 			System.out.println("Réference :"+pièce.getRéf());
@@ -47,6 +47,7 @@ public class Réparation {
 			System.out.println("Quantité :"+pièce.getQuantité());
 			System.out.println("Quantité Stock :"+pièce.getQuantitéStock());
 			System.out.println("Prix :"+pièce.getPrix());
+			System.out.println("  ");
 			compteur++;
 		}
 		}

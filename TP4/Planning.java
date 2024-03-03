@@ -7,6 +7,17 @@ public class Planning {
 	private  int numP;
 	private Vector<Maintenance> listeMaintenance;
 	
+	Planning(int numP, Date datesMaint[] , int nbHeures[] , String travaux[], Vector<Pièce> listePiècesMaint ){
+		this.numP = numP;
+		Vector<Maintenance> listeMain = new Vector<>();
+		for(int i=0 ; i< datesMaint.length; i++) {
+			Maintenance m1 = new Maintenance(datesMaint[i], nbHeures[i], travaux[i]);
+			m1.setListePiècesMaint(listePiècesMaint);
+			listeMain.add(m1);
+		}
+		this.listeMaintenance = listeMain;
+	}
+
 	public Vector<Maintenance> getListeMaintenance() {
 		return listeMaintenance;
 	}
@@ -50,8 +61,8 @@ public class Planning {
 		}
 	}
 	
-	public void ajouterMaint(Date dateMaint , int nbHeure , String travaux) {
-		listeMaintenance.add(new Maintenance(dateMaint,nbHeure,travaux));
+	public void ajouterMaint(Date dateMaint , int nbHeure , String travaux, Vector<Pièce> listePièce) {
+		listeMaintenance.add(new Maintenance(dateMaint,nbHeure,travaux,listePièce));
 	}
 
 	private  class Maintenance {
@@ -64,6 +75,13 @@ public class Planning {
 			 this.dateMaint = dateMaint;
 			 this.nbHeure = nbHeure;
 			 this.travaux = travaux;
+			 this.listePiècesMaint = listePiècesMaint;
+		 }
+		 Maintenance(Date dateMaint , int nbHeure , String travaux, Vector<Pièce> v1){
+			 this.dateMaint = dateMaint;
+			 this.nbHeure = nbHeure;
+			 this.travaux = travaux;
+			 this.listePiècesMaint = v1;
 		 }
 		public int getNbHeure() {
 			return nbHeure;
