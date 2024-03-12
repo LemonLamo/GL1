@@ -31,4 +31,5 @@ public class Atelier {
 		this.entrée = entrée;
 		this.sortie = sortie;
 	}
+	
 }

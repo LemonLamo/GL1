@@ -27,7 +27,7 @@ public class Equipement {
 		this.prix = prix;
 	} 
 	
-	Equipement(String désignation,int numSérie, double prix){
+	public Equipement(String désignation,int numSérie, double prix){
 		this.désignation = désignation;
 		this.numSérie = numSérie;
 		this.prix = prix;
