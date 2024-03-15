@@ -8,6 +8,8 @@ public class Equipement {
 	private Fournisseur fournisseur;
 	private Atelier atelier;
 	public Equipement type;
+    
+
 	public int getNumSérie() {
 		return numSérie;
 	}

@@ -1,12 +1,12 @@
 package TP5;
 // les classes statiques ne puevent pas exister en dehors d'une classe instantciable
-class Pièce {
+public class Pièce {
 
 	private int réf; 
 	private String nom; 
 	private int quantité; 
 	static int quantitéStock =0; 
-    String constructeur;
+    private String constructeur;
 	private double prix; 
 	
 	public boolean isDispo(String nom) {
@@ -33,6 +33,14 @@ class Pièce {
 		this.nom=nom;
 		this.quantité = quantité;		
 		this.prix = prix;
+		quantitéStock++;
+	}
+	public Pièce(int réf, String nom, String constructeur, int quantité, double prix) {
+		this.réf = réf;
+		this.nom=nom;
+		this.quantité = quantité;		
+		this.prix = prix;
+		this.constructeur= constructeur;
 		quantitéStock++;
 	}
 
