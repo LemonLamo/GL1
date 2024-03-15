@@ -8,8 +8,6 @@ public class Equipement {
 	private Fournisseur fournisseur;
 	private Atelier atelier;
 	public Equipement type;
-    
-
 	public int getNumSérie() {
 		return numSérie;
 	}
@@ -53,5 +51,11 @@ public class Equipement {
 		}else {
 			System.out.println("Erreur lors de la suppression du Fournisseur : 404 n\'existe pas");
 		}
+	}
+	public Atelier getAtelier() {
+		return atelier;
+	}
+	public void setAtelier(Atelier atelier) {
+		this.atelier = atelier;
 	}
 }
