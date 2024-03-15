@@ -9,6 +9,8 @@ public class Pièce {
     private String constructeur;
 	private double prix; 
 	
+
+
 	public boolean isDispo(String nom) {
 		if (nom == this.nom) {
 			return quantité <= quantitéStock;
@@ -81,4 +83,5 @@ public class Pièce {
     public String getConstructeur () {
         return constructeur;
     }
+	
 }

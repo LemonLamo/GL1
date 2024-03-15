@@ -7,6 +7,7 @@ public class Reparation {
     private Date dateRéparation;
     private int nombreHeure;
     private String travaux;
+    
     private Equipement equipement;
     private Technicien technicien;
     //private Pièce pièce;
@@ -72,10 +73,21 @@ public class Reparation {
     //une piece est reformable si elle tombe souvent en panne , on peut mettre un compteur pour savoir cmb de fois 
     //la piece a deja ete réparé 
     //on rajoute un attribut dans la classe reparation 
-    public boolean estRéformable() {
-        
-    
-    }
+    public boolean estRéformable(int réf) {
+        if(occurencePièce(réf) > 3) {
+            return true;
+        }
+        return false;
+     }
+    private int occurencePièce(int réf) {
+       int cpt=0;
+         for(Pièce p : listePiècesRep) {
+           if(p.getRéf() == réf) {
+              cpt++;
+            }
+       }
+        return cpt;
+     }
 
     public void ajouterPièce(int réf, String nom, String constructeur,int quantité,double prix) {
            for (Pièce p : listePiècesRep) {
