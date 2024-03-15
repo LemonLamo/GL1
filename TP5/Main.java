@@ -3,6 +3,7 @@ package TP5;
 import java.util.Date;
 import java.util.Vector;
 import java.text.DecimalFormat;
+import java.util.LinkedHashSet;
 public class Main {
 		
 	
@@ -60,17 +61,62 @@ public class Main {
 		Reparation r1 = new Reparation(entrée , 7 , "refaire la taule");
 		r1.setListePièces(new Vector<Pièce>());
 		r1.ajouterPièce(p2);
+		r1.ajouterPièce(p2);
+		r1.ajouterPièce(p2);
+		r1.ajouterPièce(p2);
+		r1.ajouterPièce(p2);
+		r1.ajouterPièce(p3);
+		r1.ajouterPièce(p3);
+		r1.ajouterPièce(p3);
+		r1.ajouterPièce(p3);
 		r1.ajouterPièce(p3);
 		r1.ajouterPièce(p4);
 		r1.ajouterPièce(p5);
 		r1.ajouterPièce(p6);
 		r1.ajouterPièce(p7);
+		r1.ajouterPièce(p7);
+		r1.ajouterPièce(p7);
+		r1.ajouterPièce(p7);
+		r1.ajouterPièce(p7);
 		t1.setMembres(equipe);
 		t2.setMembres(equipe);
 		r1.afficherListePièces();
-		DecimalFormat montantFormaté = new DecimalFormat("###,###.00 DZD");
+		DecimalFormat montantFormaté = new DecimalFormat("### ###.00 DZD");
 		String moneyString = montantFormaté.format(r1.calculerMontantRéparation());
-		System.out.println("*****Le montant de la réparation est : "+moneyString); 
+		System.out.println("Le montant de la réparation est : "+moneyString); 
+		r1.supprimerPièce(p5.getRéf());
+		moneyString = montantFormaté.format(r1.calculerMontantRéparation());
+		System.out.println("Le montant de la réparation est : "+moneyString); 
+		r1.ajouterPièce(p16);
+		moneyString = montantFormaté.format(r1.calculerMontantRéparation());
+		System.out.println("Le montant de la réparation est : "+moneyString);
+		r1.setTechnicien(t1);
+		System.out.println("Technicien chargé de réparation Matricule : "+r1.getTechnicien().getMatricule());
+		r1.setEquipement(e2);
+		r1.setNombreHeure(80);
+		r1.setEquipement(e1);
+		
+		Vector<Pièce> pièceReformable = new Vector<Pièce>();
+	    for(Pièce p : r1.getListePièces()) {
+	    	if(r1.estRéformable(p.getRéf())) {
+	    		pièceReformable.add(p);
+	    	}	    	
+	    }
+	    //purger la listePièceReparation 
+	    for(Pièce p : pièceReformable) {
+	    	r1.getListePièces().removeElement(p);
+	    }
+        LinkedHashSet<Pièce> hashSet = new LinkedHashSet<>(pièceReformable);
+        pièceReformable.clear();
+        pièceReformable.addAll(hashSet);
+        System.out.println("Les pièce suivantes sont reformables");	
+        for(Pièce p : pièceReformable) {
+        	System.out.println("Pièce Réf : "+p.getRéf()+" Nom: "+p.getNom());
+        	
+        	}
+		System.out.println("Listes des pièces reparations non reformable");
+        r1.afficherListePièces();
 	}
 	
 }
+
