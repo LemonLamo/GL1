@@ -1,7 +1,6 @@
 package TP5;
 import java.util.Date;
 import java.util.Vector;
-import java.util.ArrayList;
 
 
 public class Reparation {
@@ -75,7 +74,7 @@ public class Reparation {
     //on rajoute un attribut dans la classe reparation 
     public boolean estRéformable() {
         
-
+    
     }
 
     public void ajouterPièce(int réf, String nom, String constructeur,int quantité,double prix) {
