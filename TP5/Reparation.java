@@ -79,7 +79,7 @@ public class Reparation {
     //une piece est reformable si elle tombe souvent en panne , on peut mettre un compteur pour savoir cmb de fois 
     //la piece a deja ete réparé 
     public boolean estRéformable(int réf) {
-    		if(occurencePièce(réf) > 3) {
+    		if(occurencePièce(réf) >= 3) {
     			return true;
     		}
     		return false;
@@ -132,7 +132,7 @@ public class Reparation {
         int compteur = 1; 
         System.out.println("************************Liste des pièces************************");
         for(Pièce pièce : listePiècesRep) {
-            System.out.println("************Pièce N°"+compteur);
+            System.out.println("************Pièce N°"+compteur+"************");
             System.out.println("Réference :"+pièce.getRéf());
             System.out.println("Nom :"+pièce.getNom());
             System.out.println("Quantité :"+pièce.getQuantité());
